@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/front.css"/>
+        <link rel="stylesheet" href="../css/cropbox.css"/>
+        <title>全球汉语教师网</title>
+    </head>
+
+    <body>
+        <div class="header">
+        <div class="layer">
+            <div class="wrapper">
+                <div class="logo">
+                    <a href="index.html"><img src="../images/title.png" alt="全球汉语教师网"/></a>
+                </div>
+                <div class="clearboth"></div>
+            </div>
+            <ul class="nav">
+                <div class="wrapper">
+                    <li><a href="#">汉办直通车</a></li>
+                    <li><a href="#">教学信息</a></li>
+                    <li class="active"><a href="case-index.html">教学资源</a></li>
+                    <li><a href="#">在线课堂</a></li>
+                    <li><a href="#">信息发布</a></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+        <div class="wrapper">
+            <div id="page-wrapper">
+
+                <div class="row">
+                    <div class="info-table">
+                        <div>
+                            <span>邮箱</span>
+                            <span><input type="text" class="table-input"/></span>
+                        </div>
+                        <div>
+                            <span>昵称</span>
+                            <span><input type="text" class="table-input"/></span>
+                        </div>
+                        <div>
+                            <span>头像</span>
+                            <span class="text-left"><a class="btn btn-default" data-toggle="modal" data-target="#head">上传头像</a></span>
+                        </div>
+                        <div>
+                            <span>性别</span>
+                            <span>
+                                <label><input type="radio" name="sex" checked="checked"/> 男</label>
+                                <label><input type="radio" name="sex"/> 女</label>
+                            </span>
+                        </div>
+                        <div>
+                            <span>兴趣点</span>
+                            <span class="register-interest">
+                                <label><input type="checkbox" name="interest"/> 兴趣点1</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点2</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点3</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点4</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点5</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点6</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点7</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点8</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点9</label>
+                                <label><input type="checkbox" name="interest"/> 兴趣点10</label>
+                            </span>
+                        </div>
+                        <p class="teacher-hint">教师请维护以下信息</p>
+                        <div>
+                            <span>工作单位</span>
+                            <span><input type="text" class="table-input"/></span>
+                        </div>
+                        <div>
+                            <span>研究方向</span>
+                            <span><input type="text" class="table-input"/></span>
+                        </div>
+                        <button class="btn btn-default btn-psd" data-toggle="modal" data-target="#changePassword">修改密码</button>
+                    </div>
+                </div>
+
+                <div class="row btn-row">
+                    <div class="btn-row text-center">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#success">修改</button>
+                        <button class="btn btn-default">取消</button>
+                    </div>
+                </div>
+
+                <div class="modal fade btn-modal" id="head" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" style="width: 800px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="container">
+                                    <div class="imageBox">
+                                        <div class="thumbBox"></div>
+                                        <div class="spinner" style="display: none">Loading...</div>
+                                    </div>
+                                    <div class="action">
+                                        <!-- <input type="file" id="file" style=" width: 200px">-->
+                                        <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
+                                            <label  for="upload-file">上传图像</label>
+                                        </a>
+                                            <input type="file" class="" name="upload-file" id="upload-file" />
+                                        </div>
+                                        <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
+                                        <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
+                                        <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+                                    </div>
+                                    <div class="cropped"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="modal fade btn-modal" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body text-center">
+                                <div>
+                                    <label>密码</label>
+                                    <span><input type="password" class="form-control" placeholder="请输入密码" /></span>
+                                </div>
+                                <div>
+                                    <label>确认密码</label>
+                                    <span><input type="password" class="form-control"
+                                    placeholder="请再次输入密码"/></span>
+                                </div>
+                                <p class="text-center alert-red">两次密码输入不一致</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+                <div class="modal fade btn-modal" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">修改提示</h4>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p>修改成功</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+            </div><!-- /#page-wrapper -->
+
+        </div><!-- /#wrapper -->
+
+        <div class="footer">
+            <div class="wrapper">
+                <div class="footer-left">
+                    <div><label class="label-user" for="username">用户登录</label><input type="text" id="username"/></div>
+                    <div><label class="label-user" for="password">密码输入</label><input type="text" id="password"/></div>
+                    <button class="btn footer-btn">EMAIL SIGNUP</button>
+                    <a href="register.html" class="btn footer-btn">REGISTER</a>
+                </div>
+                <div class="footer-center">
+                    <p>主办方</p>
+                    <p>全球汉语教师网 （汉办）</p>
+                    <p class="footer-web">www.hanban.com</p>
+                </div>
+                <div class="footer-right text-left">
+                    <p>与我们联系</p>
+                    <ul class="contact-ul">
+                        <li><a href="#"><img src="../images/contact1.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact2.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact3.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact4.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact5.png" alt=""/></a></li>
+                    </ul>
+                </div>
+                <div class="clearboth"></div>
+                <div class="footer-bottom">
+                    <p>© Copyright 2016 华东师范大学 国际汉语教师研修基地版权所有</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="../script/jquery.min.js"></script>
+        <script src="../script/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../script/cropbox.js"></script>
+        <script type="text/javascript">
+
+            $(window).load(function() {
+
+                var options =
+                {
+                    thumbBox: '.thumbBox',
+                    spinner: '.spinner',
+                    imgSrc: 'images/avatar.png'
+                }
+                var cropper = $('.imageBox').cropbox(options);
+                var img="";
+                $('#upload-file').on('change', function(){
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        options.imgSrc = e.target.result;
+                        cropper = $('.imageBox').cropbox(options);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                    this.files = [];
+                    $('#btnCrop').click();
+                })
+                $('#btnCrop').on('click', function(){
+                    img = cropper.getDataURL();
+                    $('.cropped').html('');
+                    $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+                    $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+                    $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+                })
+                function getImg(){
+
+                }
+                $('#btnZoomIn').on('click', function(){
+                    cropper.zoomIn();
+                })
+                $('#btnZoomOut').on('click', function(){
+                    cropper.zoomOut();
+                })
+            });
+        </script>
+  </body>
+</html>

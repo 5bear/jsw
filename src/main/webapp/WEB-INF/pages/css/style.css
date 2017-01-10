@@ -1,0 +1,62 @@
+.tree {
+    min-height:20px;
+    padding: 5px 5px 5px 20px;
+    margin-bottom:20px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+}
+.tree li {
+    list-style-type:none;
+    margin:0;
+    padding:0px 5px 0 5px;
+    position:relative
+}
+.tree li::before, .tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto
+}
+.tree li::before {
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+.tree li::after {
+    height:20px;
+    top:25px;
+    width:25px
+}
+.tree li label, .tree li label {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none;
+    cursor: pointer;
+    font-size: 12px;
+}
+.tree li.parent_li>label {
+    cursor:pointer
+}
+.tree>ul>li::before, .tree>ul>li::after {
+    border:0
+}
+.tree li:last-child::before {
+    height:30px
+}
+.tree li.parent_li>label:hover, .tree li.parent_li>label:hover+ul li label {
+    cursor: pointer;
+}
+
+.tree ul {
+    padding-left: 5px;
+}
+
+.badge {
+    background-color: inherit;
+    color: #5a5a5a;
+}

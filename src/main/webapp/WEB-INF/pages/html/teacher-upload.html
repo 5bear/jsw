@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/front.css"/>
+        <link rel="stylesheet" href="../css/cropbox.css"/>
+        <title>全球汉语教师网</title>
+    </head>
+
+    <body>
+        <div class="header">
+        <div class="layer">
+            <div class="wrapper">
+                <div class="logo">
+                    <a href="index.html"><img src="../images/title.png" alt="全球汉语教师网"/></a>
+                </div>
+                <div class="clearboth"></div>
+            </div>
+            <ul class="nav">
+                <div class="wrapper">
+                    <li><a href="#">汉办直通车</a></li>
+                    <li><a href="#">教学信息</a></li>
+                    <li><a href="case-index.html">教学资源</a></li>
+                    <li><a href="#">在线课堂</a></li>
+                    <li><a href="#">信息发布</a></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+        <div class="wrapper">
+            <div id="page-wrapper">
+                <div class="row course-status">
+                    <a href="user-index.html" class="back">< 返回</a>
+                    <input type="text" class="search" placeholder="搜索"/>
+                    <label for="status">状态: </label>
+                    <select class="form-control" name="status" id="status">
+                        <option value="">全部</option>
+                        <option value="">审核通过</option>
+                        <option value="">驳回</option>
+                        <option value="">未审核</option>
+                        <option value="">草稿箱</option>
+                    </select>
+                    <button class="btn btn-default">搜索</button>
+                </div>
+                <div class="row table-row">
+                    <table class="table course-table">
+                        <thead>
+                        <tr>
+                            <th>案例名称</th>
+                            <th>案例分类</th>
+                            <th>二级分类</th>
+                            <th>上传文件</th>
+                            <th>上传时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="">《第一课》吃青团</td>
+                            <td>语言教学</td>
+                            <td>语言要素</td>
+                            <td><a class="course-preview" href="live-preview.html">《第一课》吃青团.pdf</a></td>
+                            <td>2016-05-02</td>
+                            <td class="passed">审核通过</td>
+                            <td>
+                                <a href="upload-preview.html">查看</a>
+                                <a href="javascript:;">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>《第一课》吃青团</td>
+                            <td>语言教学</td>
+                            <td>语言要素</td>
+                            <td><a class="course-preview" href="live-preview.html">《第一课》吃青团.pdf</a></td>
+                            <td>2016-05-02</td>
+                            <td class="failed">
+                                已驳回 <a href="javascript:;" data-toggle="modal" data-target="#refuse">(驳回原因)</a>
+                            </td>
+                            <td>
+                                <a href="upload-preview.html">查看</a>
+                                <a href="upload.html">编辑</a>
+                                <a href="javascript:;">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>《第一课》吃青团</td>
+                            <td>语言教学</td>
+                            <td>语言要素</td>
+                            <td><a class="course-preview" href="live-preview.html">《第一课》吃青团.pdf</a></td>
+                            <td>2016-05-02</td>
+                            <td class="passing">未审核</td>
+                            <td>
+                                <a href="upload-preview.html">查看</a>
+                                <a href="upload.html">编辑</a>
+                                <a href="javascript:;">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>《第一课》吃青团</td>
+                            <td>语言教学</td>
+                            <td>语言要素</td>
+                            <td><a class="course-preview" href="live-preview.html">《第一课》吃青团.pdf</a></td>
+                            <td>2016-05-02</td>
+                            <td class="draft">草稿箱</td>
+                            <td>
+                                <a href="upload-preview.html">查看</a>
+                                <a href="upload.html">编辑</a>
+                                <a href="javascript:;">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pages">
+                    <li><a href="#"><</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">></a></li>
+                </ul>
+
+                <div class="modal fade btn-modal" id="refuse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">驳回意见</h4>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p>这里是驳回意见</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+            </div><!-- /#page-wrapper -->
+
+        </div><!-- /#wrapper -->
+
+        <div class="footer">
+            <div class="wrapper">
+                <div class="footer-left">
+                    <div><label class="label-user" for="username">用户登录</label><input type="text" id="username"/></div>
+                    <div><label class="label-user" for="password">密码输入</label><input type="text" id="password"/></div>
+                    <p class="text-center alert-red">错误的用户名或密码</p>
+                    <button class="btn footer-btn">EMAIL SIGNUP</button>
+                    <a href="register.html" class="btn footer-btn">REGISTER</a>
+                </div>
+                <div class="footer-center">
+                    <p>主办方</p>
+                    <p>全球汉语教师网 （汉办）</p>
+                    <p class="footer-web">www.hanban.com</p>
+                </div>
+                <div class="footer-right text-left">
+                    <p>与我们联系</p>
+                    <ul class="contact-ul">
+                        <li><a href="#"><img src="../images/contact1.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact2.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact3.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact4.png" alt=""/></a></li>
+                        <li><a href="#"><img src="../images/contact5.png" alt=""/></a></li>
+                    </ul>
+                </div>
+                <div class="clearboth"></div>
+                <div class="footer-bottom">
+                    <p>© Copyright 2016 华东师范大学 国际汉语教师研修基地版权所有</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="../script/jquery.min.js"></script>
+        <script src="../script/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../script/cropbox.js"></script>
+        <script type="text/javascript">
+
+            $(window).load(function() {
+
+                var options =
+                {
+                    thumbBox: '.thumbBox',
+                    spinner: '.spinner',
+                    imgSrc: 'images/avatar.png'
+                }
+                var cropper = $('.imageBox').cropbox(options);
+                var img="";
+                $('#upload-file').on('change', function(){
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        options.imgSrc = e.target.result;
+                        cropper = $('.imageBox').cropbox(options);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                    this.files = [];
+                    $('#btnCrop').click();
+                })
+                $('#btnCrop').on('click', function(){
+                    img = cropper.getDataURL();
+                    $('.cropped').html('');
+                    $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:64px;margin-top:4px;border-radius:64px;box-shadow:0px 0px 12px #7E7E7E;" ><p>64px*64px</p>');
+                    $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:128px;margin-top:4px;border-radius:128px;box-shadow:0px 0px 12px #7E7E7E;"><p>128px*128px</p>');
+                    $('.cropped').append('<img src="'+img+'" align="absmiddle" style="width:180px;margin-top:4px;border-radius:180px;box-shadow:0px 0px 12px #7E7E7E;"><p>180px*180px</p>');
+                })
+                function getImg(){
+
+                }
+                $('#btnZoomIn').on('click', function(){
+                    cropper.zoomIn();
+                })
+                $('#btnZoomOut').on('click', function(){
+                    cropper.zoomOut();
+                })
+            });
+        </script>
+  </body>
+</html>

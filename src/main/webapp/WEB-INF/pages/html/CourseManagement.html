@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <link href="../css/sb-admin.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/end.css"/>
+        <title>全球汉语教师网</title>
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="../images/title.png" alt="全球汉语教师网"/></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+                        <li><a href="TeacherManagement.html"><i class="fa fa-dashboard"></i> 教师管理</a></li>
+                        <li><a href="CategoryManagement.html"><i class="fa fa-dashboard"></i> 类别管理</a></li>
+                        <li class="active"><a href="CourseManagement.html"><i class="fa fa-dashboard"></i> 案例管理</a></li>
+                        <li><a href="UserManagement.html"><i class="fa fa-dashboard"></i> 用户管理</a></li>
+                        <li><a href="TagManagement.html"><i class="fa fa-dashboard"></i> tag管理</a></li>
+                        <!--<li><a href="CommentManagement.html"><i class="fa fa-dashboard"></i> 评论管理</a></li>-->
+                        <li><a href="PasswordManagement.html"><i class="fa fa-dashboard"></i> 修改密码</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right navbar-user">
+                        <li><a href="#">admin</a></li>
+                        <li><a href="#">注销</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+
+            <div id="page-wrapper">
+
+                <div class="row">
+                    <div class="col-lg-12 time-row">
+                        审核状态
+                        <select name="" id="">
+                            <option value="">待审核</option>
+                            <option value="">已发布</option>
+                            <option value="">已删除</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>案例名称</th>
+                                <th>案例分类</th>
+                                <th>案例标签</th>
+                                <th>上传时间</th>
+                                <th>教师</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>《第一课》吃青团</td>
+                                <td class="course-sort">基础汉语、中文、初级、青少年、课文、兴趣、阅读</td>
+                                <td class="course-tag">标签1、标签2、标签3</td>
+                                <td>2016-04-01</td>
+                                <td>XXX</td>
+                                <td class="replyed">已发布</td>
+                                <td><a href="CourseManagement-edit.html" class="operation"><label><img src="../images/edit.png" alt="编辑"/>编辑</label></a>
+                                    <a class="operation" data-toggle="modal" data-target="#delete"><label><img src="../images/delete1.png" alt="删除"/>删除</label></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>《第一课》吃青团</td>
+                                <td class="course-sort">基础汉语、中文、初级、青少年、课文、兴趣、阅读</td>
+                                <td class="course-tag">标签1、标签2、标签3</td>
+                                <td>2016-04-01</td>
+                                <td>XXX</td>
+                                <td class="reply-fail">已删除</td>
+                                <td><a class="operation" data-toggle="modal" data-target="#delete"><label><img src="../images/delete1.png" alt="删除"/>删除</label></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>《第一课》吃青团</td>
+                                <td class="course-sort">基础汉语、中文、初级、青少年、课文、兴趣、阅读</td>
+                                <td class="course-tag">标签1、标签2、标签3</td>
+                                <td>2016-04-01</td>
+                                <td>XXX</td>
+                                <td class="replying">待审核</td>
+                                <td>
+                                    <a class="operation check-operation" data-toggle="modal" data-target="#success"><label><span class="glyphicon glyphicon-ok"></span> 审核通过</label></a>
+                                    <a class="operation check-operation" data-toggle="modal" data-target="#fail"><label><span class="glyphicon glyphicon-remove"></span> 审核失败</label></a>
+                                    <a class="operation" data-toggle="modal" data-target="#delete"><label><img src="../images/delete1.png" alt="删除"/>删除</label></a>
+                                </td>
+                            </tr>
+                            <tr>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <ul class="page">
+                            <li><a href="#"><</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">删除提示</h4>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p>你确定要删除吗？</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+            </div><!-- /#page-wrapper -->
+
+        </div><!-- /#wrapper -->
+
+        <!-- JavaScript -->
+        <script src="../script/jquery.min.js"></script>
+        <script src="../script/bootstrap.min.js"></script>
+  </body>
+</html>

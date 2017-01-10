@@ -1,0 +1,400 @@
+html {
+    font-family: Microsoft YaHei, STHeiti;
+}
+
+.navbar {
+    height: 100px;
+    background: url(../images/background.png);
+    background-size: cover;
+}
+
+.navbar-brand img {
+    height: 50px;
+    margin-top: 10px;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+.table {
+    border: 1px solid #cccccc;
+}
+
+th {
+    text-align: center;
+    background-color: #0E618C;
+    color: white;
+    border-right: 1px solid #D4D3D1;
+    vertical-align: middle;
+}
+
+.table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    background-color: #F2F2F2;
+    vertical-align: middle;
+}
+
+.table-title {
+    font-size: 18px;
+}
+
+td.replying {
+    color: #00467C;
+}
+
+td.replyed {
+    color: #E27800;
+}
+
+td.reply-fail {
+    color: #e2341a;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.table-time {
+    margin-right: 20px;
+}
+
+.search-row {
+    margin-bottom: 20px;
+}
+
+.time-row {
+    margin-bottom: 20px;
+}
+
+select {
+    background-color: #F2F2F2;
+    padding: 3px 6px;
+    height: 25px;
+    border: none;
+    margin-right: 10px;
+    width: 150px;
+    text-align: center;
+}
+
+#date, #hour, #date1, #date2 {
+    border: none;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    padding: 3px 6px;
+    margin-right: 10px;
+    width: 150px;
+}
+
+#date1, #date2 {
+    margin: 0px 20px;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #004B83;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #004B83;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #004B83;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #004B83;
+}
+
+.operation {
+    color: #29ABE2;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.operation:hover, .operation:focus {
+    color: #29ABE2;
+}
+
+.operation > span {
+    width: 18px;
+    height: 18px;
+}
+
+.operation img, .add-operation img {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    position: relative;
+    bottom: 4px;
+}
+
+.operation label {
+    cursor: pointer;
+    width: 50px;
+    position: relative;
+    top: 2px;
+}
+
+.add-operation {
+    color: #0E618C;
+}
+
+.btn-default, .btn-default:focus {
+    background-color: #00608B;
+    color: white;
+    font-size: 14px;
+    padding: 2px 25px;
+    line-height: 22px;
+    outline: none;
+}
+
+.btn-default:hover {
+    background-color: #005C95;
+    color: white;
+}
+
+.vertical-table > tbody > tr > td {
+    text-align: center;
+    height: 43px;
+}
+
+.vertical-table > tbody > tr > td.text-left {
+    text-align: left;
+}
+
+.vertical-table > tbody > tr > td:first-child, .vertical-table > tbody > tr > td.table-th {
+    text-align: center;
+    background-color: #0E618C;
+    color: white;
+    border-right: 1px solid #D4D3D1;
+}
+
+.table-input {
+    width: 100%;
+}
+
+select.table-input {
+    border: 1px solid #CCCCCC;
+    background-color: white;
+    border-radius: 0px;
+}
+
+.vertical-table-content {
+    width: 65%;
+}
+
+.search-row > label {
+    font-weight: normal;
+    margin-right: 20px;
+}
+
+.alert {
+    width: 400px;
+    background-color: #FF9335;
+    color: black;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+}
+
+.alert-title {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.alert-table {
+    font-size: 18px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+.alert-table > tbody > tr > td {
+    word-wrap: break-word;
+    word-break: normal;
+    max-width: 350px;
+}
+
+.alert button {
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    padding: 2px 25px;
+    line-height: 22px;
+    outline: none;
+    border: none;
+}
+
+.progress-table > tbody > tr > td {
+    background-color: white;
+    width: 5%;
+}
+
+.progress-table > tbody > tr > td:first-child {
+    width: 15%;
+}
+
+.progress-table > tbody > tr > td.green {
+    background-color: #A6CE94;
+}
+
+.progress-table > tbody > tr > td.yellow {
+    background-color: #FFD971;
+}
+
+.progress-table > tbody > tr > td.red {
+    background-color: #FF081C;
+}
+
+.progress-table a {
+    color: black;
+}
+
+.page {
+    list-style: none;
+    font-size: 16px;
+    float: right;
+}
+
+.page > li {
+    float: left;
+    margin-right: 10px;
+}
+
+.page > li.active, .page > li:hover {
+    color: #0f2983;
+}
+
+.page > li.active {
+    text-decoration: underline;
+}
+
+.vertical-table1 > tbody > tr > td:first-child {
+    width: 30%;
+}
+
+.search-div {
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 200px;
+    border-radius: 4px;
+    text-align: left;
+    padding: 2px 4px;
+    margin-right: 20px;
+    position: relative;
+    top: 1px;
+}
+
+.search-div > img {
+    width: 18px;
+    height: 18px;
+}
+
+.search-div > input {
+    border: none;
+    outline: none;
+}
+
+.plan1-table a {
+    color: white;
+    text-decoration: underline;
+}
+
+.plan1-table a:hover, .plan1-table a:focus{
+    color: white;
+    text-decoration: underline;
+}
+
+.left-input {
+    float: left;
+    width: 80%;
+}
+
+.red-alert {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.password-row {
+    margin-top: 40px;
+}
+
+td.comment-content, td.comment-reply {
+    width: 200px;
+    text-align: left;
+}
+
+.vertical-table textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    outline: none;
+    border: 1px solid #E0E0E0;
+}
+
+.add-operation label {
+    cursor: pointer;
+}
+
+.check-operation label {
+    width: 80px;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+td.label-td {
+    max-width: 75%;
+}
+
+.btn-danger {
+    margin-right: 5px;
+    background-color: #0E618C;
+    border: none;
+    margin-bottom: 4px;
+}
+
+.btn-danger:hover {
+    background-color: #0E618C;
+}
+
+.vertical-table p {
+    margin-bottom: 0;
+}
+
+.vertical-table .head {
+    width: 150px;
+    height: 150px;
+}
+
+.table .head {
+    width: 50px;
+    height: 50px;
+}
+
+#opinion {
+    width: 100%;
+    height: 100px;
+}
+
+#add-label {
+    width: 200px;
+}
+
+.check-fail {
+    margin: 0;
+}
+
+.navbar-inverse .navbar-right > li > a {
+    color: #005c95;
+}
+
+
