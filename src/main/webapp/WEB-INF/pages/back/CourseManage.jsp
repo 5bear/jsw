@@ -200,6 +200,7 @@
                        </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
+                     <a class="operation check-operation" href="javascript:getLog(${slide.sId})"><label><span class="glyphicon glyphicon glyphicon-list"></span> 日志</label></a>
                  </c:when>
                  <c:when test="${slide.state==2}">
 <%--
@@ -277,6 +278,7 @@
                        </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
+                     <a class="operation check-operation" href="javascript:getLog(${slide.sId})"><label><span class="glyphicon glyphicon glyphicon-list"></span> 日志</label></a>
                  </c:when>
                  <c:when test="${slide.state==3}">
                    <%--
@@ -354,6 +356,7 @@
                        </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
+                     <a class="operation check-operation" href="javascript:getLog(${slide.sId})"><label><span class="glyphicon glyphicon glyphicon-list"></span> 日志</label></a>
                  </c:when>
                  <c:when test="${slide.state==4}">
                    <%--
@@ -415,6 +418,7 @@
                        </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
+                     <a class="operation check-operation" href="javascript:getLog(${slide.sId})"><label><span class="glyphicon glyphicon glyphicon-list"></span> 日志</label></a>
                  </c:when>
                  <c:when test="${slide.state==5}">
                    <%--
@@ -454,6 +458,7 @@
                        </div><!-- /.modal-content -->
                      </div><!-- /.modal-dialog -->
                    </div><!-- /.modal -->
+                     <a class="operation check-operation" href="javascript:getLog(${slide.sId})"><label><span class="glyphicon glyphicon glyphicon-list"></span> 日志</label></a>
                  </c:when>
                </c:choose>
              </td>
@@ -461,6 +466,32 @@
          </c:forEach>
           </tbody>
         </table>
+          <div class="modal fade btn-modal" id="log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title log-title">日志</h4>
+                      </div>
+                      <div class="modal-body text-center" id="log_content">
+                          <div class="log-item">
+                              <p class="time">2017-03-04：</p>
+                              <p class="content">案例被审核通过</p>
+                          </div>
+                          <div class="log-item">
+                              <p class="time">2017-03-04：</p>
+                              <p class="content">案例被审核通过</p>
+                          </div>
+                          <div class="log-item">
+                              <p class="time">2017-03-04：</p>
+                              <p class="content">案例被审核通过</p>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                      </div>
+                  </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
 
         <jsp:include page="../public/page.jsp">
           <jsp:param name="url" value="<%=url%>"></jsp:param>
@@ -523,6 +554,24 @@
       var form=document.getElementById("form"+sid)
       form.submit()
       return true
+  }
+  function getLog(sId){
+      $.ajax({
+          url:"getLogs",
+          type:"get",
+          data:{sid:sId},
+          dataType:"json",
+          success: function (data) {
+              var log_content = "";
+              $(data).each(function (index, element) {
+                  log_content += "<div class='log-item'>" +
+                          " <p class='time'>" + element.formatTime + "：</p> " +
+                          "<p class='content'>" + element.logInfo + "</p> </div>";
+              })
+              $("#log_content").html(log_content)
+              $("#log").modal("show")
+          }
+      })
   }
 </script>
 </body>

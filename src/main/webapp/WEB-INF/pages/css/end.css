@@ -397,4 +397,23 @@ td.label-td {
     color: #005c95;
 }
 
+.log-title {
+    color: #333;
+}
+
+.log-item {
+    text-align: left;
+    margin: 10px;
+    color: #333;
+}
+
+.log-item .time {
+    display: inline-block;
+    font-size: 14px;
+    width: 100px;
+}
+
+.log-item .content {
+    display: inline-block;
+}
 

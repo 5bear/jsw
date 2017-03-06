@@ -430,6 +430,7 @@ public class BackController extends BaseController {
             }
             slide.setState(status);
             slideDao.update(slide);
+            slideDao.addLog(slide,null);
             Account teacher=slide.getTeacher();
             //审核通过 积分+10
             if(status==5){

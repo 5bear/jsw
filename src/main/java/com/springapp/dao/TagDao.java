@@ -142,9 +142,9 @@ public class TagDao extends BaseDao {
     public List<uTag>getUserTagByStatus(String status){
         try{
             int s=Integer.parseInt(status);
-            return this.findAll("from uTag where role=0 and status=? and userCount>=10  order by uweight desc",uTag.class,s);
+            return this.findAll("from uTag where role=0 and status=? and userCount>=5  order by uweight desc",uTag.class,s);
         }catch (Exception e) {
-            return this.findAll("from uTag where role=0 and userCount>=10  order by uweight desc", uTag.class);
+            return this.findAll("from uTag where role=0 and userCount>=5  order by uweight desc", uTag.class);
         }
     }
     public List<uTag>getUserPassTag(){
@@ -177,9 +177,9 @@ public class TagDao extends BaseDao {
     public List<uTag>getPageListByStatus(int pn,String status){
         try{
             int s=Integer.parseInt(status);
-            return this.findByPage("from uTag where role=0 and userCount>=10  and status="+s,uTag.class,(pn-1)*PAGELENGTH,PAGELENGTH);
+            return this.findByPage("from uTag where role=0 and userCount>=5  and status="+s,uTag.class,(pn-1)*PAGELENGTH,PAGELENGTH);
         }catch (Exception e) {
-            return this.findByPage("from uTag where role=0 and userCount>=10 ", uTag.class, (pn - 1) * PAGELENGTH, PAGELENGTH);
+            return this.findByPage("from uTag where role=0 and userCount>=5 ", uTag.class, (pn - 1) * PAGELENGTH, PAGELENGTH);
         }
     }
     public uTag getByTag(String tag,Slide slide){

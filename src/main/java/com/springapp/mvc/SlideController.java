@@ -1,10 +1,8 @@
 package com.springapp.mvc;
 
 import com.springapp.classes.FileUtil;
-import com.springapp.entity.Account;
-import com.springapp.entity.Slide;
-import com.springapp.entity.SlidePic;
-import com.springapp.entity.uTag;
+import com.springapp.entity.*;
+import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -138,6 +136,7 @@ public class SlideController extends BaseController{
             uploadFile(slide,file,realPath);
         }
         slideDao.update(slide);
+        slideDao.addLog(slide,1);
         if(!previewPic[0].isEmpty()) {
             List<SlidePic>slidePics=baseDao.findAll("from SlidePic where slide=?",SlidePic.class,slide);
             for(SlidePic slidePic:slidePics){
@@ -207,6 +206,7 @@ public class SlideController extends BaseController{
             teacher.setIntegral(teacher.getIntegral()+2);
         accountDao.update(teacher);
         baseDao.save(slide);
+        slideDao.addLog(slide,null);
         /*teacher.setCaseCount(teacher.getCaseCount()+1);
         baseDao.update(teacher);*/
         if(previewPic!=null&&!previewPic[0].isEmpty()) {
@@ -281,5 +281,13 @@ public class SlideController extends BaseController{
             }
         }
         return modelAndView;
+    }
+
+    //获得案例操作日志
+    @RequestMapping(value = "getLogs", method = RequestMethod.GET)
+    @ResponseBody
+    public String getLogs(Long sid){
+        List<OperationLog> operationLogList = slideDao.getLogs(sid);
+        return JSONArray.fromObject(operationLogList).toString();
     }
 }

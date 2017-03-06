@@ -2,7 +2,9 @@ package com.springapp.dao;
 import com.springapp.entity.*;
 import org.springframework.stereotype.Repository;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -323,5 +325,46 @@ public class SlideDao extends BaseDao {
         }
         slide.setState(0);
         this.update(slide);
+    }
+
+    //添加日志 状态0表示删除   1 草稿箱 2 已提交 3 编审中 4 驳回 5 审核通过
+    public void addLog(Slide slide, Integer update){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        OperationLog operationLog = new OperationLog();
+        operationLog.setSlide(slide);
+        if(update == null) {
+            switch (slide.getState()) {
+                case 0:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被删除");
+                    break;
+                case 1:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被保存");
+                    break;
+                case 2:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被提交");
+                    break;
+                case 3:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "编审中");
+                    break;
+                case 4:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被驳回" + ",驳回原因:" + slide.getOpinion());
+                    break;
+                case 5:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被审核通过");
+                    break;
+                default:
+                    operationLog.setLogInfo("案例默认操作");
+                    break;
+            }
+        }else{
+            operationLog.setLogInfo("案例" + slide.getTitle() + "被更新");
+        }
+        operationLog.setTimestamp(System.currentTimeMillis());
+        operationLog.setFormatTime(sdf.format(new Date()));
+        this.save(operationLog);
+    }
+
+    public List<OperationLog> getLogs(Long sid){
+        return this.findAll("from OperationLog where slide = " + sid + " order by timestamp desc", OperationLog.class);
     }
 }

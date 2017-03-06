@@ -98,24 +98,29 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
+
+
                         <c:choose>
                             <c:when test="${slide.state==1}">
                                 <td>
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">编辑</a>
                                     <a href="#" onclick="changeStatus(2,'${slide.sId}')">提交</a>
                                     <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">日志</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==2}">
                                 <td>
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
                                     <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">日志</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==3}">
                                 <td>
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
                                     <a href="#" onclick="deleteSlide('${slide.sId}')">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">日志</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==4}">
@@ -123,12 +128,14 @@
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">编辑</a>
                                     <a href="#" onclick="changeStatus(2,'${slide.sId}')">提交</a>
                                     <a href="#" onclick="deleteSlide('${slide.sId}')">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">日志</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==5}">
                                 <td>
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
                                     <a href="#" onclick="deleteSlide('${slide.sId}')">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">日志</a>
                                 </td>
                             </c:when>
                         </c:choose>
@@ -157,6 +164,33 @@
             <jsp:param name="totalPage" value="<%=totalPage%>"></jsp:param>
             <jsp:param name="currentPage" value="<%=currentPage%>"></jsp:param>
         </jsp:include>
+
+        <div class="modal fade btn-modal" id="log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title log-title">日志</h4>
+                    </div>
+                    <div class="modal-body text-center" id="log_content">
+                        <div class="log-item">
+                            <p class="time">2017-03-04：</p>
+                            <p class="content">案例被审核通过</p>
+                        </div>
+                        <div class="log-item">
+                            <p class="time">2017-03-04：</p>
+                            <p class="content">案例被审核通过</p>
+                        </div>
+                        <div class="log-item">
+                            <p class="time">2017-03-04：</p>
+                            <p class="content">案例被审核通过</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <div class="modal fade btn-modal" id="refuse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog">
@@ -242,6 +276,24 @@
             data:{status:status,sId:sId,opinion:opinion==undefined?"":opinion.value},
             success: function (data) {
                 location.reload(true)
+            }
+        })
+    }
+    function getLog(sId){
+        $.ajax({
+            url:"getLogs",
+            type:"get",
+            data:{sid:sId},
+            dataType:"json",
+            success: function (data) {
+                var log_content = "";
+                $(data).each(function (index, element) {
+                    log_content += "<div class='log-item'>" +
+                            " <p class='time'>" + element.formatTime + "：</p> " +
+                            "<p class='content'>" + element.logInfo + "</p> </div>";
+                })
+                $("#log_content").html(log_content)
+                $("#log").modal("show")
             }
         })
     }

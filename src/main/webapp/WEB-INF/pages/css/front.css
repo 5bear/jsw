@@ -2024,7 +2024,7 @@ a .case-item {
 .course-table tbody td {
     color: #70756d;
     text-align: left;
-    max-width: 120px;
+    max-width: 140px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2187,5 +2187,25 @@ a .case-item {
 }
 
 .login-info .right a {
+    display: inline-block;
+}
+
+.log-title {
+    color: #595d56;
+}
+
+.log-item {
+    text-align: left;
+    margin: 10px;
+    color: #70756d;
+}
+
+.log-item .time {
+    display: inline-block;
+    font-size: 14px;
+    width: 175px;
+}
+
+.log-item .content {
     display: inline-block;
 }

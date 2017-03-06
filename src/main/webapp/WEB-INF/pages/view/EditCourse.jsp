@@ -70,7 +70,7 @@
 
             <div class="row btn-row">
                 <div class="text-center">
-                    <button class="btn btn-default" type="button" onclick="checkForm()">提交</button>
+                    <button class="btn btn-default" type="button" onclick="checkForm()">保存</button>
                     <button class="btn btn-default" type="button" onclick="javascript:location.reload(true)">取消</button>
                 </div>
             </div>
