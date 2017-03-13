@@ -283,7 +283,7 @@ public class BackController extends BaseController {
     @ResponseBody
     public String addAdminTag(String tag,Long sId){
         Slide slide=slideDao.get(Slide.class,sId);
-        //如果状态未通过并且未驳回，状态置为编审中
+        //如果状态未通过并且未驳回，状态置为正在编审
         if(slide.getState()==2) {
             slide.setState(3);
             slideDao.update(slide);

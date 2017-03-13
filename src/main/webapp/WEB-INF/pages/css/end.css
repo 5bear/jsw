@@ -27,6 +27,7 @@ th {
     color: white;
     border-right: 1px solid #D4D3D1;
     vertical-align: middle;
+    text-align: left;
 }
 
 .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
@@ -34,6 +35,8 @@ th {
     border-bottom: 1px solid #dddddd;
     background-color: #F2F2F2;
     vertical-align: middle;
+    width: 10%;
+    text-align: left;
 }
 
 .table-title {
@@ -410,10 +413,18 @@ td.label-td {
 .log-item .time {
     display: inline-block;
     font-size: 14px;
-    width: 100px;
+    width: 175px;
 }
 
 .log-item .content {
     display: inline-block;
 }
 
+textarea.advice-textarea {
+    width: 100%;
+    height: 200px;
+}
+
+.modal-title {
+    display: inline-block;
+}

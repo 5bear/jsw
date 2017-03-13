@@ -32,12 +32,13 @@
             <input type="text" name="si" class="search" placeholder="搜索"/>
             <label for="status">状态: </label>
             <select class="form-control" name="status" id="status">
-                <option value="0" <%=status==0?"selected":""%>>全部</option>
-                <option value="5" <%=status==5?"selected":""%>>已通过</option>
-                <option value="4" <%=status==4?"selected":""%>>已驳回</option>
-                <option value="3" <%=status==3?"selected":""%>>编审中</option>
-                <option value="2" <%=status==2?"selected":""%>>已提交</option>
-                <option value="1" <%=status==1?"selected":""%>>草稿箱</option>
+                <option value="0" <%=status==0?"selected":""%>>全部案例</option>
+                <option value="5" <%=status==5?"selected":""%>>审核通过</option>
+                <option value="6" <%=status==6?"selected":""%>>退回修改</option>
+                <option value="4" <%=status==4?"selected":""%>>拒绝录用</option>
+                <option value="3" <%=status==3?"selected":""%>>正在编审</option>
+                <option value="2" <%=status==2?"selected":""%>>提交待审</option>
+                <option value="1" <%=status==1?"selected":""%>>我的草稿</option>
             </select>
             <button class="btn btn-default" type="submit">搜索</button>
         </div>
@@ -47,7 +48,7 @@
                 <thead>
                 <tr>
                     <th>案例名称</th>
-                    <th>案例分类</th>
+                    <th style="width: 105px;">案例分类</th>
                     <th>二级分类</th>
                     <th>案例标签</th>
                    <%-- <th>管理员标签</th>
@@ -71,15 +72,17 @@
                         <td>${slide.formatTimestamp}</td>
                         <td class="passed"><script>
                             if('${slide.state}'=="1"){
-                                document.write("草稿箱")
+                                document.write("我的草稿")
                             }else if('${slide.state}'=="2"){
-                                document.write("已提交")
+                                document.write("提交待审")
                             }else if('${slide.state}'=="3"){
-                                document.write("编审中")
+                                document.write("正在编审")
                             }else if('${slide.state}'=="4"){
-                                document.write("已驳回"+"<a href='#' data-toggle='modal' data-target='#refuse${slide.sId}'>(驳回原因)</a>")
+                                document.write("拒绝录用")
                             }else if('${slide.state}'=="5"){
-                                document.write("已通过")
+                                document.write("审核通过")
+                            }else if('${slide.state}'=="6"){
+                                document.write("退回修改"+"<a href='#' data-toggle='modal' data-target='#refuse${slide.sId}'>(原因)</a>")
                             }
                         </script></td>
                         <div class="modal fade" id="delete${slide.sId}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -102,40 +105,46 @@
 
                         <c:choose>
                             <c:when test="${slide.state==1}">
-                                <td>
+                                <td style="max-width: 170px;">
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">编辑</a>
                                     <a href="#" onclick="changeStatus(2,'${slide.sId}')">提交</a>
                                     <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
-                                    <a href="javascript:getLog(${slide.sId})">日志</a>
+                                    <a href="javascript:getLog(${slide.sId})">历史记录</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==2}">
-                                <td>
+                                <td style="max-width: 170px;">
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
                                     <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
-                                    <a href="javascript:getLog(${slide.sId})">日志</a>
+                                    <a href="javascript:getLog(${slide.sId})">历史记录</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==3}">
-                                <td>
+                                <td style="max-width: 170px;">
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
                                     <a href="#" onclick="deleteSlide('${slide.sId}')">删除</a>
-                                    <a href="javascript:getLog(${slide.sId})">日志</a>
+                                    <a href="javascript:getLog(${slide.sId})">历史记录</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==4}">
-                                <td>
-                                    <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">编辑</a>
-                                    <a href="#" onclick="changeStatus(2,'${slide.sId}')">提交</a>
-                                    <a href="#" onclick="deleteSlide('${slide.sId}')">删除</a>
-                                    <a href="javascript:getLog(${slide.sId})">日志</a>
+                                <td style="max-width: 170px;">
+                                    <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
+                                    <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">历史记录</a>
                                 </td>
                             </c:when>
                             <c:when test="${slide.state==5}">
-                                <td>
+                                <td style="max-width: 170px;">
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">查看</a>
                                     <a href="#" onclick="deleteSlide('${slide.sId}')">删除</a>
-                                    <a href="javascript:getLog(${slide.sId})">日志</a>
+                                    <a href="javascript:getLog(${slide.sId})">历史记录</a>
+                                </td>
+                            </c:when>
+                            <c:when test="${slide.state==6}">
+                                <td style="max-width: 170px;">
+                                    <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">编辑</a>
+                                    <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
+                                    <a href="javascript:getLog(${slide.sId})">历史记录</a>
                                 </td>
                             </c:when>
                         </c:choose>
@@ -143,7 +152,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">驳回意见</h4>
+                                        <h4 class="modal-title">退回意见</h4>
                                     </div>
                                     <div class="modal-body text-center">
                                         <p>${slide.opinion}</p>
@@ -169,7 +178,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title log-title">日志</h4>
+                        <h4 class="modal-title log-title">历史记录</h4>
                     </div>
                     <div class="modal-body text-center" id="log_content">
                         <div class="log-item">
@@ -196,10 +205,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">驳回意见</h4>
+                        <h4 class="modal-title">退回意见</h4>
                     </div>
                     <div class="modal-body text-center">
-                        <p>这里是驳回意见</p>
+                        <p>这里是退回意见</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

@@ -25,7 +25,7 @@ public class Slide {
     private List<uTag> AdminTag;//管理员打标签
     private String aTag;
     private Timestamp uploadDatetime;//上传时间
-    private Integer state;//状态0表示删除   1 草稿箱 2 已提交 3 编审中 4 驳回 5 审核通过
+    private Integer state;//状态0表示删除   1 草稿箱 2 提交待审 3 正在编审 4 拒绝录用 5 审核通过 6 退回修改
     private String opinion;//驳回意见
     private String fileName;//上传的文件名
     private String fileType;//上传的文件类型

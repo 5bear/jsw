@@ -262,7 +262,7 @@ public class SlideController extends BaseController{
         } else {
             Integer status = slide.getState();
             //未提交/驳回，进入编辑|否则进去查看
-            if (status == 1 || status == 4) {
+            if (status == 1 || status == 6) {
                 List<SlidePic> slidePics = baseDao.findAll("from SlidePic where slide=?", SlidePic.class, slide);
                 modelAndView.addObject("slidePics", slidePics);
                 modelAndView.addObject("slide", slide);

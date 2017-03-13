@@ -19,6 +19,7 @@ public class BaseDao{
     private SessionFactory sessionFactory;
 
     public static int PAGELENGTH=9;
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

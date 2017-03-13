@@ -327,9 +327,9 @@ public class SlideDao extends BaseDao {
         this.update(slide);
     }
 
-    //添加日志 状态0表示删除   1 草稿箱 2 已提交 3 编审中 4 驳回 5 审核通过
+    //添加日志 状态0表示删除   1 草稿箱 2 提交待审 3 正在编审 4 驳回 5 审核通过
     public void addLog(Slide slide, Integer update){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         OperationLog operationLog = new OperationLog();
         operationLog.setSlide(slide);
         if(update == null) {
@@ -344,13 +344,16 @@ public class SlideDao extends BaseDao {
                     operationLog.setLogInfo("案例" + slide.getTitle() + "被提交");
                     break;
                 case 3:
-                    operationLog.setLogInfo("案例" + slide.getTitle() + "编审中");
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "正在编审");
                     break;
                 case 4:
-                    operationLog.setLogInfo("案例" + slide.getTitle() + "被驳回" + ",驳回原因:" + slide.getOpinion());
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被拒绝录用");
                     break;
                 case 5:
                     operationLog.setLogInfo("案例" + slide.getTitle() + "被审核通过");
+                    break;
+                case 6:
+                    operationLog.setLogInfo("案例" + slide.getTitle() + "被退回修改"  + ",驳回原因:" + slide.getOpinion());
                     break;
                 default:
                     operationLog.setLogInfo("案例默认操作");

@@ -41,8 +41,8 @@
                   <option value="0" <%=status.equals("0")?"selected":""%>>全部</option>
                   <option value="5" <%=status.equals("5")?"selected":""%>>审核通过</option>
                   <option value="4" <%=status.equals("4")?"selected":""%>>驳回</option>
-                  <option value="3" <%=status.equals("3")?"selected":""%>>编审中</option>
-                  <option value="2" <%=status.equals("2")?"selected":""%>>已提交</option>
+                  <option value="3" <%=status.equals("3")?"selected":""%>>正在编审</option>
+                  <option value="2" <%=status.equals("2")?"selected":""%>>提交待审</option>
 <%--
                   <option value="1" <%=status.equals("1")?"selected":""%>>草稿箱</option>
 --%>
@@ -84,9 +84,9 @@
                           if('${slide.state}'=="1"){
                               document.write("未提交")
                           }else if('${slide.state}'=="2"){
-                              document.write("已提交")
+                              document.write("提交待审")
                           }else if('${slide.state}'=="3"){
-                              document.write("编审中")
+                              document.write("正在编审")
                           }else if('${slide.state}'=="4"){
                               document.write("已驳回")
                           }else if('${slide.state}'=="5"){
