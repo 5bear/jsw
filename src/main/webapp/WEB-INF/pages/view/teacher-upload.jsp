@@ -62,7 +62,8 @@
                 <tbody>
                 <c:forEach items="${list}" var="slide">
                     <tr>
-                        <td class="">${slide.title}</td>
+                        <td class=""><a href="<%=request.getContextPath()%>/Case?id=${slide.sId}" target="_blank">${slide.title}</a>
+                        </td>
                         <td>${slide.type}</td>
                         <td>${slide.secondtype}</td>
                         <td>${slide.tTag}</td>
@@ -143,6 +144,7 @@
                             <c:when test="${slide.state==6}">
                                 <td style="max-width: 170px;">
                                     <a href="<%=request.getContextPath()%>/EditCourse/${slide.sId}">编辑</a>
+                                    <a href="#" onclick="changeStatus(2,'${slide.sId}')">提交</a>
                                     <a href="#" data-toggle="modal" data-target="#delete${slide.sId}">删除</a>
                                     <a href="javascript:getLog(${slide.sId})">历史记录</a>
                                 </td>

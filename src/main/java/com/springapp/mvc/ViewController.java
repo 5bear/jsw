@@ -2,7 +2,6 @@ package com.springapp.mvc;
 
 
 import com.springapp.classes.DicUtils;
-import com.springapp.classes.SplitWord;
 import com.springapp.entity.*;
 import org.ansj.library.UserDefineLibrary;
 import org.ansj.splitWord.analysis.ToAnalysis;
@@ -60,6 +59,17 @@ public class ViewController extends BaseController {
         slide.setViewCount(slide.getViewCount()+1);
         slideDao.update(slide);
         Account account= (Account) session.getAttribute("account");
+        Admin admin= (Admin) session.getAttribute("admin");
+        //如果是管理员账户则不用区分，直接查看
+        // 未通过状态下只能在登录状态下查看自己的案例
+        if(admin == null) {
+            if (slide.getState() != 5) {
+                if (account == null)
+                    return new ModelAndView("redirect:/CaseList");
+                else if (slide.getTeacher().getaId() != account.getaId())
+                    return new ModelAndView("redirect:/CaseList");
+            }
+        }
         if(account!=null){
             List<Slide>likeList=slideDao.RandomLikeList(account);
             /*for(Slide slide1:likeList){

@@ -66,8 +66,7 @@
           </thead>
           <tbody>
          <c:forEach items="${list}" var="slide">
-           <tr>
-             <td>${slide.title}</td>
+           <tr><td class=""><a href="<%=request.getContextPath()%>/Case?id=${slide.sId}" target="_blank">${slide.title}</a>
              <td class="course-sort">${slide.type}</td>
              <td class="course-sort">${slide.secondtype}</td>
              <td class="course-tag">${slide.tTag}</td>

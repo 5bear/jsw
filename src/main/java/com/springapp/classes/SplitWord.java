@@ -28,9 +28,7 @@ public class SplitWord {
     }
     public static void main(String[] args){
         String word="你好啊我是bbbbear";
-        String[] words=SplitWords(word);
-        for(String s:words){
-            System.out.println(s);
-        }
+        word = word.replaceAll("[\\pP\\p{Punct}]", ",");
+        System.out.print(word);
     }
 }

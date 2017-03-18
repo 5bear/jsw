@@ -166,8 +166,11 @@ public class TagDao extends BaseDao {
     }
     //获得管理员+教师标签
     public List<uTag>getConstTag(Slide slide){
-        return this.findAll("from uTag where status=1 and slide=? and role=1 and slide.state=5 or role=2 and status=1 and slide=? and slide.state=5 order by uweight desc",uTag.class,new Object[]{slide,slide});
+        return this.findAll("from uTag where slide=? and role=1 or role=2 and slide=? order by uweight desc",uTag.class,new Object[]{slide,slide});
     }
+    /*public List<uTag>getConstTag(Slide slide){
+        return this.findAll("from uTag where status=1 and slide=? and role=1 and slide.state=5 or role=2 and status=1 and slide=? and slide.state=5 order by uweight desc",uTag.class,new Object[]{slide,slide});
+    }*/
     public List<uTag>getAllConstTag(Slide slide){
         return this.findAll("from uTag where slide=? and role=1 or role=2 and slide=? order by uweight desc",uTag.class,new Object[]{slide,slide});
     }

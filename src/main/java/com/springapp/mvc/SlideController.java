@@ -127,7 +127,7 @@ public class SlideController extends BaseController{
         slide.setTitle(title);
         slide.setType(type);
         slide.setSecondtype(secondtype);
-        tTag=slide.gettTag().replaceAll("[^(\\u4e00-\\u9fa5)]", ",");
+        tTag = tTag.replaceAll("[\\pP\\p{Punct}]", ",");
         slide.settTag(tTag);
         slide.setDescription(description);
         slide.setUploadDatetime(new Timestamp(System.currentTimeMillis()));
@@ -187,7 +187,7 @@ public class SlideController extends BaseController{
         return modelAndView;
     }
     @RequestMapping(value = "CourseAdd",method = RequestMethod.POST)
-    public String CourseAdd(HttpServletRequest request,Integer flag,Slide slide,MultipartFile file,@RequestParam(value = "previewPic")MultipartFile []previewPic,HttpSession session) throws Exception {
+    public String CourseAdd(Integer flag,Slide slide,MultipartFile file,@RequestParam(value = "previewPic")MultipartFile []previewPic,HttpSession session) throws Exception {
         Account teacher= (Account) session.getAttribute("account");
         if(teacher==null)
             return "redirect:/Login";
@@ -195,7 +195,7 @@ public class SlideController extends BaseController{
         slide.setTeacher(teacher);
         slide.setState(flag);//未审核
         //分标签
-        String tag=slide.gettTag().replaceAll("[^(\\u4e00-\\u9fa5)]", ",");
+        String tag=slide.gettTag().replaceAll("[\\pP\\p{Punct}]", ",");
         slide.settTag(tag);
         if(file!=null&&!file.isEmpty()) {
             String realPath = session.getServletContext().getRealPath("/WEB-INF/pages/slides/slides");
