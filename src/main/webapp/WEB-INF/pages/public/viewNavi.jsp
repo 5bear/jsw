@@ -35,7 +35,7 @@
                 </div>
                 <div class="right">
                     <a href="<%=request.getContextPath()%>/Upload">上传案例</a>
-                    <a href="<%=request.getContextPath()%>/userLogout">注销</a>
+                    <a href="<%=request.getContextPath()%>/userLogout">退出</a>
                 </div>
                 </div>
                 <%--<a href=""></a>

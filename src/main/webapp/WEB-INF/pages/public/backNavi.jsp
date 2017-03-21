@@ -38,7 +38,7 @@
 
     <ul class="nav navbar-nav navbar-right navbar-user">
       <li><a href="#"><%=admin==null?"":admin.getAccount()%></a></li>
-      <li><a href="<%=request.getContextPath()%>/adminLogout">注销</a></li>
+      <li><a href="<%=request.getContextPath()%>/adminLogout">退出</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>

@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class HelloController {
 	@RequestMapping(value = "/hello",method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
-		model.addAttribute("message", "异步上传测试");
+	public String printWelcome() {
 		return "view/case";
 	}
 	@RequestMapping(method = RequestMethod.GET)

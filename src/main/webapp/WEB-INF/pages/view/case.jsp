@@ -32,6 +32,11 @@
                 <a href="#" onclick="down('${slide.sId}','${account.aId}')">下载</a>
             </div>
             <div>上传日期：${slide.formatTimestamp}</div>
+            <a class="btn btn-danger float-right" style="margin-top: 0; cursor: default; border: 1px solid #DB9500; color: #DB9500;">
+                    <span class="js-cate-content">
+                        <span>${slide.type}</span>-<span>${slide.secondtype}</span>
+                    </span>
+            </a>
             <div id="ckepop">
                 <span class="jiathis_txt">分享到：</span>
                 <a class="jiathis_button_weixin">微信</a>

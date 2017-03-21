@@ -23,7 +23,7 @@
 <jsp:include page="../public/viewNavi.jsp"></jsp:include>
 <div class="wrapper">
   <div class="case-list">
-    <p class="wrapper-title like-title">搜索结果</p>
+    <p class="wrapper-title like-title">案例库</p>
    <c:forEach items="${list}" var="slide">
      <a href="<%=request.getContextPath()%>/Case?id=${slide.sId}"><div class="panel case-item">
        <div class="panel-heading">

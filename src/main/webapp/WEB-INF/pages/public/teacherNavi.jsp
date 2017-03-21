@@ -35,7 +35,7 @@
 
     <ul class="nav navbar-nav navbar-right navbar-user">
       <li><a href="javascript:void(0)"><%=editor==null?"":editor.getUsername()%></a></li>
-      <li><a href="<%=request.getContextPath()%>/teacherLogout">注销</a></li>
+      <li><a href="<%=request.getContextPath()%>/teacherLogout">退出</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
