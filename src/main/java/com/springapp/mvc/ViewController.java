@@ -2,6 +2,7 @@ package com.springapp.mvc;
 
 
 import com.springapp.classes.DicUtils;
+import com.springapp.dao.BaseDao;
 import com.springapp.entity.*;
 import org.ansj.library.UserDefineLibrary;
 import org.ansj.splitWord.analysis.ToAnalysis;
@@ -50,7 +51,7 @@ public class ViewController extends BaseController {
     @RequestMapping(value = "Case")
     public ModelAndView Case(Long id,HttpSession session){
         ModelAndView modelAndView=new ModelAndView();
-        if(id==null||"".equals(id)){
+        if(id==null){
             return new ModelAndView("redirect:/CaseList");
         }
         Slide slide=slideDao.get(Slide.class,id);
@@ -66,19 +67,13 @@ public class ViewController extends BaseController {
             if (slide.getState() != 5) {
                 if (account == null)
                     return new ModelAndView("redirect:/CaseList");
-                else if (slide.getTeacher().getaId() != account.getaId())
+                else if (!Objects.equals(slide.getTeacher().getaId(), account.getaId()))
                     return new ModelAndView("redirect:/CaseList");
             }
         }
         if(account!=null){
             List<Slide>likeList=slideDao.RandomLikeList(account);
-            /*for(Slide slide1:likeList){
-                if(slide.getsId()==slide1.getsId())
-                    likeList.remove(slide1);
-            }*/
             modelAndView.addObject("likeList",likeList);
-        }
-        if(account!=null&&slide!=null){
             UserView userView=new UserView();
             userView.setAccount(account);
             userView.setSlide(slide);
@@ -131,6 +126,7 @@ public class ViewController extends BaseController {
         String[] keywords=null;
         if(searchInput!=null&&!"".equals(searchInput)) {
             session.setAttribute("searchInput",searchInput);
+            searchInput += searchType;
             searchInput=searchInput.replaceAll("[^(\\u4e00-\\u9fa5)]", "");
             try {
                 List<String> dic = DicUtils.getDicList();
@@ -142,6 +138,11 @@ public class ViewController extends BaseController {
                 keywords =new String[]{""};
             }
           /* keywords= SplitWord.SplitWords(searchInput);*/
+        }
+        if(keywords != null) {
+            for (String keyword : keywords) {
+                System.out.print(keyword);
+            }
         }
         String qKey="";
         if(keywords!=null){
@@ -239,7 +240,6 @@ public class ViewController extends BaseController {
         modelAndView.setViewName("view/case-index");
         return modelAndView;
     }
-    private static int adjustFactor=1000;
 
     /**
      * 返回搜索结果
@@ -264,6 +264,7 @@ public class ViewController extends BaseController {
                     resultEntity.setSlide(tag.getSlide());
                     resultEntity.setTerm(tag);
                     resultEntity.setTag_weight(tag.getUweight());
+                    int adjustFactor = 1000;
                     Double score = tag.getUweight() + termMap.get(uTag) * adjustFactor;
                     resultEntity.setScore(score);
                     resultList.add(resultEntity);
@@ -338,6 +339,7 @@ public class ViewController extends BaseController {
         String searchInput=request.getParameter("si");
         String[] keywords=null;
         if(searchInput!=null&&!"".equals(searchInput)) {
+            searchInput += searchType;
             searchInput=searchInput.replaceAll("[^(\\u4e00-\\u9fa5)]", "");
             try {
                 List<String> dic = DicUtils.getDicList();
@@ -370,19 +372,19 @@ public class ViewController extends BaseController {
             }
         }
         int totalPage;
-        if(slideList.size()%baseDao.PAGELENGTH==0)
-            totalPage=slideList.size()/baseDao.PAGELENGTH;
+        if(slideList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=slideList.size()/baseDao.PAGELENGTH+1;
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH +1;
         List<Slide>myList = new ArrayList<>();
         if(totalPage-1<0)
             totalPage=1;
         if(pageNum<totalPage){
-            for(int i=(pageNum-1)*baseDao.PAGELENGTH;i<(pageNum-1)*baseDao.PAGELENGTH+9;i++){
+            for(int i = (pageNum-1)* BaseDao.PAGELENGTH; i<(pageNum-1)* BaseDao.PAGELENGTH +9; i++){
                 myList.add(slideList.get(i).getSlide());
             }
         }else{
-            for(int i=(totalPage-1)*baseDao.PAGELENGTH;i<slideList.size();i++){
+            for(int i = (totalPage-1)* BaseDao.PAGELENGTH; i<slideList.size(); i++){
                 myList.add(slideList.get(i).getSlide());
             }
         }
@@ -409,10 +411,10 @@ public class ViewController extends BaseController {
         }
         List<UserZan>userZanList=accountDao.getUserZanList(account);
         int totalPage;
-        if(userZanList.size()%baseDao.PAGELENGTH==0)
-            totalPage=userZanList.size()/baseDao.PAGELENGTH;
+        if(userZanList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=userZanList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=userZanList.size()/baseDao.PAGELENGTH+1;
+            totalPage=userZanList.size()/ BaseDao.PAGELENGTH +1;
         List<UserZan>myList=accountDao.getUserZanList(account,pageNum);
         request.setAttribute("currentPage",pageNum);
         request.setAttribute("totalPage",totalPage);
@@ -437,10 +439,10 @@ public class ViewController extends BaseController {
         }
         List<UserCollect>userCollectList=accountDao.getUserCollectList(account);
         int totalPage;
-        if(userCollectList.size()%baseDao.PAGELENGTH==0)
-            totalPage=userCollectList.size()/baseDao.PAGELENGTH;
+        if(userCollectList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=userCollectList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=userCollectList.size()/baseDao.PAGELENGTH+1;
+            totalPage=userCollectList.size()/ BaseDao.PAGELENGTH +1;
         List<UserCollect>myList=accountDao.getUserCollectList(account, pageNum);
         request.setAttribute("currentPage",pageNum);
         request.setAttribute("totalPage",totalPage);
@@ -465,10 +467,10 @@ public class ViewController extends BaseController {
         }
         List<UserDown>userCollectList=accountDao.getUserDownList(account);
         int totalPage;
-        if(userCollectList.size()%baseDao.PAGELENGTH==0)
-            totalPage=userCollectList.size()/baseDao.PAGELENGTH;
+        if(userCollectList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=userCollectList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=userCollectList.size()/baseDao.PAGELENGTH+1;
+            totalPage=userCollectList.size()/ BaseDao.PAGELENGTH +1;
         List<UserDown>myList=accountDao.getUserDownList(account, pageNum);
         request.setAttribute("currentPage",pageNum);
         request.setAttribute("totalPage",totalPage);
@@ -496,10 +498,10 @@ public class ViewController extends BaseController {
         }
         List<Slide> slideList=slideDao.getList(teacher);
         int totalPage;
-        if(slideList.size()%baseDao.PAGELENGTH==0)
-            totalPage=slideList.size()/baseDao.PAGELENGTH;
+        if(slideList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=slideList.size()/baseDao.PAGELENGTH+1;
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH +1;
         List<Slide>myList=slideDao.getPageList(teacher, pageNum);
         request.setAttribute("currentPage",pageNum);
         request.setAttribute("totalPage",totalPage);
@@ -508,7 +510,7 @@ public class ViewController extends BaseController {
     }
     @RequestMapping(value = "Teacher/{id}")
     public ModelAndView Teacher(HttpServletRequest request,HttpSession session,@PathVariable("id") Long id){
-        if(id==null||"".equals(id))
+        if(id==null)
             return new ModelAndView("redirect:/TeacherList");
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("view/teacher");
@@ -564,10 +566,10 @@ public class ViewController extends BaseController {
         }
         List<Account> teacherList=accountDao.getTeacher();
         int totalPage;
-        if(teacherList.size()%baseDao.PAGELENGTH==0)
-            totalPage=teacherList.size()/baseDao.PAGELENGTH;
+        if(teacherList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=teacherList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=teacherList.size()/baseDao.PAGELENGTH+1;
+            totalPage=teacherList.size()/ BaseDao.PAGELENGTH +1;
         List<Account>myList=accountDao.getTeacherPageList(pageNum);
         request.setAttribute("currentPage",pageNum);
         request.setAttribute("totalPage",totalPage);
@@ -625,10 +627,10 @@ public class ViewController extends BaseController {
         if(slideList==null)
             slideList=new ArrayList<>();
         int totalPage;
-        if(slideList.size()%baseDao.PAGELENGTH==0)
-            totalPage=slideList.size()/baseDao.PAGELENGTH;
+        if(slideList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=slideList.size()/baseDao.PAGELENGTH+1;
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH +1;
         List<Slide>myList=slideDao.getPageListForTeacher(account,pageNum, state,si);
         for(Slide slide:myList){
             List<uTag>userTagList=tagDao.getUserTag(slide);

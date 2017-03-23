@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import com.springapp.dao.BaseDao;
 import com.springapp.entity.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,10 +41,10 @@ public class BackController extends BaseController {
         }
         List<Editor>editorList=editorDao.getEditor();
         int totalPage;
-        if(editorList.size()%baseDao.PAGELENGTH==0)
-            totalPage=editorList.size()/baseDao.PAGELENGTH;
+        if(editorList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=editorList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=editorList.size()/baseDao.PAGELENGTH+1;
+            totalPage=editorList.size()/ BaseDao.PAGELENGTH +1;
         List<Editor>myList=editorDao.getEditorPageList(pageNum);
         request.setAttribute("currentPage",pageNum);
         request.setAttribute("totalPage",totalPage);
@@ -52,7 +53,7 @@ public class BackController extends BaseController {
         return modelAndView;
     }
     @RequestMapping(value = "EditorManagement/{id}")
-    public ModelAndView EditorUpdate(HttpSession session, @PathVariable("id") Long id){
+    public ModelAndView EditorUpdate( @PathVariable("id") Long id){
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName("back/EditorManagement-edit");
         if(id!=null&&id!=0){
@@ -121,10 +122,10 @@ public class BackController extends BaseController {
         }
         List<Account>accountList=accountDao.getList();
         int totalPage;
-        if(accountList.size()%baseDao.PAGELENGTH==0)
-            totalPage=accountList.size()/baseDao.PAGELENGTH;
+        if(accountList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=accountList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=accountList.size()/baseDao.PAGELENGTH+1;
+            totalPage=accountList.size()/ BaseDao.PAGELENGTH +1;
         List<Account>myList=accountDao.getPageList(pageNum);
         /*for(Account account:myList){
             List<UserInterest>userInterestList=baseDao.findAll("from UserInterest where account=?",UserInterest.class,new Object[]{account});
@@ -266,10 +267,10 @@ public class BackController extends BaseController {
         }
         List<uTag>tagList=tagDao.getUserTagByStatus(status);
         int totalPage;
-        if(tagList.size()%baseDao.PAGELENGTH==0)
-            totalPage=tagList.size()/baseDao.PAGELENGTH;
+        if(tagList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=tagList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=tagList.size()/baseDao.PAGELENGTH+1;
+            totalPage=tagList.size()/ BaseDao.PAGELENGTH +1;
         List<uTag>myList=tagDao.getPageListByStatus(pageNum, status);
         if(status!=null)
             request.setAttribute("status",status);
@@ -360,10 +361,10 @@ public class BackController extends BaseController {
         if(slideList==null)
             slideList=new ArrayList<>();
         int totalPage;
-        if(slideList.size()%baseDao.PAGELENGTH==0)
-            totalPage=slideList.size()/baseDao.PAGELENGTH;
+        if(slideList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=slideList.size()/baseDao.PAGELENGTH+1;
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH +1;
         List<Slide>myList=slideDao.getPageListByStatus(pageNum, status);
         for(Slide slide:myList){
             List<uTag>userTagList=tagDao.getUserTag(slide);

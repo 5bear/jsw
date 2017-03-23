@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import com.springapp.dao.BaseDao;
 import com.springapp.entity.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,24 +26,6 @@ public class EditorController extends BaseController{
         session.removeAttribute("editor");
         return "view/login";
     }
-      /* @RequestMapping(value = "teacherLoginCheck",method = RequestMethod.POST)
-       @ResponseBody
-       public String teacherLoginCheck(String no,String password,HttpSession session){
-        List<Account>teacherList=accountDao.getTeacher();
-        for (Account teacher:teacherList){
-            if(no.equals(teacher.getNo())) {
-                if (password.equals(teacher.getPassword())) {
-                    teacher.setLastLogin(new Timestamp(new Date().getTime()));
-                    teacherDao.update(teacherList);
-                    session.setAttribute("teacher",teacher);
-                    return "teacher_login_success";
-                }
-                else
-                    return "密码错误";
-            }
-        }
-        return "工号不存在";
-    }*/
 
     @RequestMapping(value = "TeacherInfo")
     public ModelAndView TeacherInfo(HttpSession session){
@@ -95,10 +78,10 @@ public class EditorController extends BaseController{
         if(slideList==null)
             slideList=new ArrayList<>();
         int totalPage;
-        if(slideList.size()%baseDao.PAGELENGTH==0)
-            totalPage=slideList.size()/baseDao.PAGELENGTH;
+        if(slideList.size()% BaseDao.PAGELENGTH ==0)
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH;
         else
-            totalPage=slideList.size()/baseDao.PAGELENGTH+1;
+            totalPage=slideList.size()/ BaseDao.PAGELENGTH +1;
         List<Slide>myList=slideDao.getPageListByStatus(pageNum, status);
         for(Slide slide:myList){
             List<uTag>userTagList=tagDao.getUserTag(slide);
